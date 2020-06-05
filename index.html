@@ -13,8 +13,22 @@
     </style>
 </head>
 <body>
-    <svg>
-        <path d="M10, 10L20,20L30, 30"/>
+    <div>
+        <button>Debug</button>
+    </div>
+
+    <svg style="background: whitesmoke; width: 200px; height: 200px;">
+        <path id="path" d="M 100 100 L 200 200 H 50"/>
     </svg>
+
+    <script type="module">
+        import {Measure} from "./src/measure.js";
+
+        document.querySelector("button").addEventListener("click", () => {
+            const data = document.querySelector("#path").getAttribute("d");
+            const bounds = Measure.get(data);
+            console.log(bounds);
+        });
+    </script>
 </body>
 </html>
