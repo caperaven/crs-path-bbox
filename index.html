@@ -17,17 +17,32 @@
         <button>Debug</button>
     </div>
 
-    <svg style="background: whitesmoke; width: 200px; height: 200px;">
-        <path id="path" d="M 10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80" stroke="black" fill="transparent"/>
+    <svg style="background: whitesmoke; width: 600px; height: 600px;">
+<!--        <path d="M20,230 Q40,205 50,230 T90,230" fill="none" stroke="blue" stroke-width="5"/>-->
+
+        <polyline points="60, 110 65, 120 70, 115 75, 130 80, 125 85, 140 90, 135 95, 150 100, 145"/>
+<!--        <polygon points="50, 160 55, 180 70, 180 60, 190 65, 205 50, 195 35, 205 40, 190 30, 180 45, 180"/>-->
     </svg>
 
     <script type="module">
         import {Measure} from "./src/measure.js";
 
+        const svg = document.querySelector("svg");
         document.querySelector("button").addEventListener("click", () => {
-            const data = document.querySelector("#path").getAttribute("d");
-            const bounds = Measure.get(data);
-            console.log(bounds);
+            for (let name of ["polyline"]) {
+                const element = document.querySelector(name);
+                const bounds = Measure[element.nodeName.toLowerCase()](element);
+
+                const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                rect.setAttributeNS("http://www.w3.org/2000/svg", "x", bounds.x);
+                rect.setAttributeNS("http://www.w3.org/2000/svg", "y", bounds.y);
+                rect.setAttributeNS("http://www.w3.org/2000/svg", "width", bounds.width);
+                rect.setAttributeNS("http://www.w3.org/2000/svg", "height", bounds.height);
+                rect.style.fill = "black";
+                rect.style.opacity = 0.25;
+
+                console.log(rect.outerHTML);
+            }
         });
     </script>
 </body>
