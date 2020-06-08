@@ -20,8 +20,7 @@
     <svg style="background: whitesmoke; width: 600px; height: 600px;">
 <!--        <path d="M20,230 Q40,205 50,230 T90,230" fill="none" stroke="blue" stroke-width="5"/>-->
 
-        <polyline points="60, 110 65, 120 70, 115 75, 130 80, 125 85, 140 90, 135 95, 150 100, 145"/>
-<!--        <polygon points="50, 160 55, 180 70, 180 60, 190 65, 205 50, 195 35, 205 40, 190 30, 180 45, 180"/>-->
+        <polygon points="50, 160 55, 180 70, 180 60, 190 65, 205 50, 195 35, 205 40, 190 30, 180 45, 180"/>
     </svg>
 
     <script type="module">
@@ -29,7 +28,7 @@
 
         const svg = document.querySelector("svg");
         document.querySelector("button").addEventListener("click", () => {
-            for (let name of ["polyline"]) {
+            for (let name of ["polygon"]) {
                 const element = document.querySelector(name);
                 const bounds = Measure[element.nodeName.toLowerCase()](element);
 

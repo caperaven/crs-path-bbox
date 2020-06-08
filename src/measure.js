@@ -59,6 +59,10 @@ export class Measure {
     }
 
     static polyline(element) {
+        return this.polygon(element);
+    }
+
+    static polygon(element) {
         const aabb = {
             x: Number.MAX_VALUE,
             y: Number.MAX_VALUE,
