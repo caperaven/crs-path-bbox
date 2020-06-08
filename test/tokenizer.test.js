@@ -27,5 +27,18 @@ test("tokenize - simple line", () => {
     expect(result3[1][0]).toEqual("L");
     expect(result3[1][1]).toEqual("20");
     expect(result3[1][1]).toEqual("20");
+});
 
+test("tokenize - curve", () => {
+   const result = tokenize("M 10 10 C 20 20, 40 20, 50 10");
+    expect(result[0][0]).toEqual("M");
+    expect(result[0][1]).toEqual("10");
+    expect(result[0][1]).toEqual("10");
+    expect(result[1][0]).toEqual("C");
+    expect(result[1][1]).toEqual("20");
+    expect(result[1][2]).toEqual("20");
+    expect(result[1][3]).toEqual("40");
+    expect(result[1][4]).toEqual("20");
+    expect(result[1][5]).toEqual("50");
+    expect(result[1][6]).toEqual("10");
 });
